@@ -261,5 +261,4 @@ void seed(){
         fclose(fptr);
         break;
     }
-    return 0;
 }
