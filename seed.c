@@ -15,6 +15,7 @@ void seed(){
 
     char a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
     int pilih;
+    int count =0;
 
     printf("Berikut List Pilihan Seed: \n");
     printf("[1] diehard                          [10] Quilt square\n");
@@ -42,6 +43,12 @@ void seed(){
         while (a != EOF){
             printf("%c", a);
             a = fgetc(fptr);
+            if (a == '\n'){
+                count = count + 1;
+                if (count == 27){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -56,6 +63,12 @@ void seed(){
         while (b != EOF){
             printf("%c", b);
             b = fgetc(fptr);
+            if (b == '\n'){
+                count = count + 1;
+                if (count == 17){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -70,6 +83,12 @@ void seed(){
         while (c != EOF){
             printf("%c", c);
             c = fgetc(fptr);
+            if (c == '\n'){
+                count = count + 1;
+                if (count == 32){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -84,6 +103,12 @@ void seed(){
         while (d != EOF){
             printf("%c", d);
             d = fgetc(fptr);
+            if (d == '\n'){
+                count = count + 1;
+                if (count == 21){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -98,6 +123,12 @@ void seed(){
         while (e != EOF){
             printf("%c", e);
             e = fgetc(fptr);
+            if (e == '\n'){
+                count = count + 1;
+                if (count == 7){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -112,6 +143,12 @@ void seed(){
         while (f != EOF){
             printf("%c", f);
             f = fgetc(fptr);
+            if (f == '\n'){
+                count = count + 1;
+                if (count == 20){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -126,6 +163,12 @@ void seed(){
         while (g != EOF){
             printf("%c", g);
             g = fgetc(fptr);
+            if (g == '\n'){
+                count = count + 1;
+                if (count == 37){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -140,6 +183,12 @@ void seed(){
         while (h != EOF){
             printf("%c", h);
             h = fgetc(fptr);
+            if (h == '\n'){
+                count = count + 1;
+                if (count == 22){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -154,6 +203,12 @@ void seed(){
         while (i != EOF){
             printf("%c", i);
             i = fgetc(fptr);
+            if (i == '\n'){
+                count = count + 1;
+                if (count == 32){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -168,6 +223,12 @@ void seed(){
         while (j != EOF){
             printf("%c", j);
             j = fgetc(fptr);
+            if (j == '\n'){
+                count = count + 1;
+                if (count == 22){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -182,6 +243,12 @@ void seed(){
         while (k != EOF){
             printf("%c", k);
             k = fgetc(fptr);
+            if (k == '\n'){
+                count = count + 1;
+                if (count == 49){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -196,6 +263,12 @@ void seed(){
         while (l != EOF){
             printf("%c", l);
             l = fgetc(fptr);
+            if (l == '\n'){
+                count = count + 1;
+                if (count == 22){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -210,6 +283,12 @@ void seed(){
         while (m != EOF){
             printf("%c", m);
             m = fgetc(fptr);
+            if (m == '\n'){
+                count = count + 1;
+                if (count == 7){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -224,6 +303,12 @@ void seed(){
         while (n != EOF){
             printf("%c", n);
             n = fgetc(fptr);
+            if (n == '\n'){
+                count = count + 1;
+                if (count == 22){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -238,6 +323,12 @@ void seed(){
         while (o != EOF){
             printf("%c", o);
             o = fgetc(fptr);
+            if (o == '\n'){
+                count = count + 1;
+                if (count == 17){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -252,6 +343,12 @@ void seed(){
         while (p != EOF){
             printf("%c", p);
             p = fgetc(fptr);
+            if (p == '\n'){
+                count = count + 1;
+                if (count == 12){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
@@ -266,6 +363,12 @@ void seed(){
         while (q != EOF){
             printf("%c", q);
             q = fgetc(fptr);
+            if (a == '\n'){
+                count = count + 1;
+                if (count == 33){
+                    break;
+                }
+            }
         }
         fclose(fptr);
         break;
