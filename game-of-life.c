@@ -10,7 +10,7 @@
 #include<stdio.h>
 
 int main(){
-    int;
+    int aksi;
     char;
 
     printf("---------------------------------------- SELAMAT DATANG DI PERMAINAN GAME OF LIFE ----------------------------------------\n\n");
@@ -27,7 +27,12 @@ int main(){
 
     seed();
 
-    //printf("")
+    printf("\n\nBerikut adalah beberapa aksi yang dapat dipilih: \n");
+    printf("1. Animate\n");
+    printf("2. Tick\n");
+    printf("3. Quit\n\n");
+    printf("Pilihan nomor aksi yang diinginkan: ");
+    scanf("%d", &aksi);
 
     return 0;
 }
