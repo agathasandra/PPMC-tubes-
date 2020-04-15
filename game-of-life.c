@@ -8,10 +8,15 @@
 */
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<time.h>
+
+void display(char **array_main,int baris,int kolom);
 
 int main(){
-    int aksi;
-    char;
+    int aksi,iterasi;
+    char baru;
 
     printf("---------------------------------------- SELAMAT DATANG DI PERMAINAN GAME OF LIFE ----------------------------------------\n\n");
     printf("Pada permainan ini, kita akan melakukan simulasi mengenai kondisi hidup dan mati pada sel.\n");
@@ -26,13 +31,41 @@ int main(){
     printf("Mari kita mulai permainannya!\n");
 
     seed();
-
-    printf("\n\nBerikut adalah beberapa aksi yang dapat dipilih: \n");
-    printf("1. Animate\n");
-    printf("2. Tick\n");
-    printf("3. Quit\n\n");
-    printf("Pilihan nomor aksi yang diinginkan: ");
-    scanf("%d", &aksi);
+    
+    while (aksi!=3){
+        printf("\n\nBerikut adalah beberapa aksi yang dapat dipilih: \n");
+        printf("1. Animate\n");
+        printf("2. Tick\n");
+        printf("3. Quit\n\n");
+        printf("Pilihan nomor aksi yang diinginkan: ");
+        scanf("%d", &aksi);
+        if (aksi==1){
+            tick();
+            display(array_main,baris,kolom);
+        }
+        else if (aksi==2){
+            printf("Masukkan jumlah iterasi: ");
+            scanf("%d",iterasi);
+            for(i=0;i<iterasi;i++){
+                tick();
+                display(array_main,baris,kolom);
+            }
+        }
+        else if (aksi==3){
+            printf("Apakah anda mau memasukkan file seed baru?(Y/N)\n");
+            scanf(" %c",&baru);
+            if (baru=='Y'){
+                seed();
+                aksi=99;//agar loop kembali berjalan
+            }
+            else if (baru=='N'){
+                printf("Selamat Tinggal");
+            }
+        }
+        else{
+            printf("pilihan invalid.\n");
+        }
+    }
 
     return 0;
 }
@@ -401,3 +434,17 @@ void seed(){
         break;
     }
 }
+
+void display(char **array_main,int baris,int kolom){
+    int ms=250,i,j;
+    clock_t start=clock();
+    while(clock()<start+ms);
+    system("cls");
+    for(i=0;i<baris;i++){
+        for(j=0;j<kolom;j++){
+            printf("%c",array_main[i][j]);
+        }
+        printf("\n");
+    }
+}
+
