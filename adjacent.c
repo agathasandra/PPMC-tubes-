@@ -9,49 +9,48 @@
 
 #include <stdio.h>
 
-int adjacent(char ** matrix, int row, int column, int max_row, int max_column) {
+int adjacent(char ** matrix, int row, int column, int max_row, int max_column){
 	int count = 0;
 	int left = column - 1;
 	int right = column + 1;
 	int bottom = row + 1;
 	int top = row - 1;
-	if(left == -1) {
+	if(left == -1){
 		left = max_column-1;
 	}
-	if(top == -1) {
+	if(top == -1){
 		top = max_row-1;
 	}
-	if(right == max_column) {
+	if(right == max_column){
 		right = 0;
 	}
-	if(bottom == max_row) {
+	if(bottom == max_row){
 		bottom = 0;
 	}
 
-	if(matrix[row][left] == 'X') {
+	if(matrix[row][left] == 'X'){
 		count++;
 	}
-	if(matrix[row][right] == 'X') {
+	if(matrix[row][right] == 'X'){
 		count++;
 	}
-	if(matrix[top][column] == 'X') {
+	if(matrix[top][column] == 'X'){
 		count++;
 	}
-	if(matrix[bottom][column] == 'X') {
+	if(matrix[bottom][column] == 'X'){
 		count++;
 	}
-	if(matrix[top][right] == 'X') {
+	if(matrix[top][right] == 'X'){
 		count++;
 	}
-	if(matrix[top][left] == 'X') {
+	if(matrix[top][left] == 'X'){
 		count++;
 	}
-	if(matrix[bottom][right] == 'X') {
+	if(matrix[bottom][right] == 'X'){
 		count++;
 	}
-	if(matrix[bottom][left] == 'X') {
+	if(matrix[bottom][left] == 'X'){
 		count++;
 	}
-
 	return count;
 }
