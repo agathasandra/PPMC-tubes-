@@ -3,7 +3,7 @@
 * Kelompok : 5 (Rombongan E)
 * Hari dan Tanggal : Kamis, 16 April 2020
 * Asisten (NIM) : Wuri Utami (13217024)
-* Nama File : game-of-life.c
+* Nama File : print_matrix.c
 * Deskripsi : Fungsi untuk print matrix
 */
 
