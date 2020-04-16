@@ -12,143 +12,13 @@
 #include<conio.h>
 #include<time.h>
 
-char** readFile(char * filename, int * max_row, int * max_col){
-	char read;
-	int row = 0, column = 0, stop = 0;
-	FILE* file;
-    file = fopen(filename, "r");
-    int row_now = 0;
-
-	read = fgetc(file);
-	while (read != '\n'){
-		row = (row * 10) + (int)read - (int)'0';
-		read = fgetc(file);
-	}
-
-	read = fgetc(file);
-	while (read != '\n'){
-		column = (column * 10) + (int)read - (int)'0';
-		read = fgetc(file);
-	}
-
-	char **matrix = (char **)malloc(row * sizeof(char *));
-
-	for(int i = 0; i < row; i++){
-		matrix[i] = (char *)malloc(column * sizeof(char));
-	}
-
-	for(int i = 0; i < row; i++){
-		for(int j = 0; j < column; j++){
-			read = fgetc(file);
-			if(read == '\n'){
-				read = fgetc(file);
-			}
-			matrix[i][j] = read;
-		}
-    }
-    *max_row = row;
-    *max_col = column;
-    return matrix;
-}
-
-int adjacent(char ** matrix, int row, int column, int max_row, int max_column){
-	int count = 0;
-	int left = column - 1;
-	int right = column + 1;
-	int bottom = row + 1;
-	int top = row - 1;
-	if(left == -1){
-		left = max_column-1;
-	}
-	if(top == -1){
-		top = max_row-1;
-	}
-	if(right == max_column){
-		right = 0;
-	}
-	if(bottom == max_row){
-		bottom = 0;
-	}
-
-	if(matrix[row][left] == 'X'){
-		count++;
-	}
-	if(matrix[row][right] == 'X'){
-		count++;
-	}
-	if(matrix[top][column] == 'X'){
-		count++;
-	}
-	if(matrix[bottom][column] == 'X'){
-		count++;
-	}
-	if(matrix[top][right] == 'X'){
-		count++;
-	}
-	if(matrix[top][left] == 'X'){
-		count++;
-	}
-	if(matrix[bottom][right] == 'X'){
-		count++;
-	}
-	if(matrix[bottom][left] == 'X'){
-		count++;
-	}
-	return count;
-}
-
-void print_matrix(char ** matrix, int max_row, int max_col){
-	for(int i = 0; i < max_row; i++){
-		for(int j = 0; j < max_col; j++){
-			printf("%c", matrix[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-char** copy_matrix(char ** input_matrix, int row, int column){
-	char **matrix = (char **)malloc(row * sizeof(char *));
-
-	for(int i = 0; i < row; i++){
-		matrix[i] = (char *)malloc(column * sizeof(char));
-	}
-	for(int i = 0; i < row; i++){
-		for(int j = 0; j < column; j++){
-			matrix[i][j] = input_matrix[i][j];
-		}
-	}
-	return matrix;
-}
-
-void seed(char *** matrix, char *** check_matrix, int * max_row, int * max_col){
-	char pilih[50];
-
-    printf("Berikut List Pilihan Seed: \n");
-    printf("[1] diehard.txt                          [10] quilt-square.txt\n");
-    printf("[2] dinner-table.txt                     [11] rpent.txt\n");
-    printf("[3] fish.txt                             [12] seeds.txt\n");
-    printf("[4] flower.txt                           [13] simple.txt\n");
-    printf("[5] format.txt                           [14] snowflake.txt\n");
-    printf("[6] glider.txt                           [15] spiral.txt\n");
-    printf("[7] glider-explosion.txt                 [16] stableplateau.txt\n");
-    printf("[8] glider-gun.txt                       [17] tictactoe.txt\n");
-    printf("[9] mycolony.txt \n");
-
-    printf("\nSeed yang diinginkan: ");
-    gets(pilih);
-    *matrix = readFile(pilih, max_row, max_col);
-    *check_matrix = copy_matrix(*matrix, *max_row, *max_col);
-    printf("%d\n", *max_row);
-    printf("%d\n", *max_col);
-    print_matrix(*matrix, *max_row, *max_col);
-}
-
+void tick(char **array_main,int m,int n);
 void display(char **array_main,int baris,int kolom);
-void tick(char **array_main,int baris,int kolom);
+char** readFile(int * max_row, int * max_col);
 
 int main(){
-    int max_row, max_col, aksi, baris, kolom, iterasi, i, loop;
-	char ** matrix, ** check_matrix, **array_main, baru;
+    int aksi, baris, kolom, iterasi, i, loop;
+    char **array_main, baru;
 
     printf("---------------------------------------- SELAMAT DATANG DI PERMAINAN GAME OF LIFE ----------------------------------------\n\n");
     printf("Pada permainan ini, kita akan melakukan simulasi mengenai kondisi hidup dan mati pada sel.\n");
@@ -162,54 +32,28 @@ int main(){
     printf("4. Jika sel hidup memiliki 4 tetangga yang hidup, maka sel tersebut akan mati pada iterasi selanjutnya /overpopulation.\n\n");
     printf("Mari kita mulai permainannya!\n");
 
-    seed(&matrix, &check_matrix, &max_row, &max_col);
+    array_main=readFile(&baris,&kolom);
+    if (array_main!=NULL){
+        display(array_main,baris,kolom);
+    }
 
-    while (aksi!=3){
-    printf("\n\nBerikut adalah beberapa aksi yang dapat dipilih: \n");
-    printf("1. Tick\n");
-    printf("2. Animate\n");
-    printf("3. Quit\n\n");
-    printf("Pilihan nomor aksi yang diinginkan: ");
-    scanf("%d", &aksi);
+    while (aksi!=3 && baris!=99999 && kolom!=99999){
+    	printf("\n\nBerikut adalah beberapa aksi yang dapat dipilih: \n");
+    	printf("1. Tick\n");
+    	printf("2. Animate\n");
+    	printf("3. Quit\n\n");
+    	printf("Pilihan nomor aksi yang diinginkan: ");
+    	scanf("%d", &aksi);
 
 	if (aksi==1){
-        for(int i = 0; i < max_row; i++){
-            for(int j = 0; j < max_col; j++){
-                int count_adj = adjacent(check_matrix, i, j, max_row, max_col);
-                if(count_adj == 1){
-                    matrix[i][j] = '-';
-                }
-                else if(count_adj == 3){
-                    matrix[i][j] = 'X';
-                }
-                else if(count_adj >= 4){
-                    matrix[i][j] = '-';
-                }
-            }
+            tick(array_main,baris,kolom);
+            display(array_main,baris,kolom);
         }
-        printf("\n");
-        print_matrix(matrix, max_row, max_col);
-	}
-	if (aksi == 2){
+	else if (aksi == 2){
 	    printf("Masukkan jumlah iterasi: ");
 	    scanf("%d",iterasi);
             for(i=0;i<iterasi;i++){
-                for(int i = 0; i < max_row; i++){
-                    for(int j = 0; j < max_col; j++){
-                        int count_adj = adjacent(check_matrix, i, j, max_row, max_col);
-                            if(count_adj == 1){
-                                matrix[i][j] = '-';
-                            }
-                            else if(count_adj == 3){
-                                matrix[i][j] = 'X';
-                            }
-                            else if(count_adj >= 4){
-                                matrix[i][j] = '-';
-                            }
-                    }
-                }
-                printf("\n");
-                print_matrix(matrix, max_row, max_col);
+                tick(array_main,baris,kolom);
                 display(array_main,baris,kolom);
             }
 	}
@@ -218,20 +62,27 @@ int main(){
             while(loop==1){
                 printf("Apakah anda mau memasukkan file seed baru?(Y/N)\n");
                 scanf(" %c",&baru);
-                if (baru=='Y'){
-                    seed(&matrix, &check_matrix, &max_row, &max_col);
-                    aksi=99;//agar loop kembali berjalan
+                if (baru=='Y' || baru=='y'){
+                    free(array_main);
+                    pilihan=99;
                     loop=0;
+                    array_main=readFile(&baris,&kolom);
+                    if (array_main!=NULL){
+                        display(array_main,baris,kolom);
+                    }
                 }
-                else if (baru=='N'){
-                    printf("Selamat Tinggal");
+                else if (baru=='N' || baru=='n'){
+                    printf("Selamat tinggal");
                     loop=0;
                 }
                 else{
-                    printf("pilihan invalid.\n");
+                    printf("input salah.\n");
                 }
             }
         }
+	else{
+		printf("pilihan invalid.\n");
+	}
     }
 	return 0;
 }
@@ -248,3 +99,144 @@ void display(char **array_main,int baris,int kolom){
         printf("\n");
     }
 }
+
+void tick(char **array_main,int m,int n){
+    int i,j,k,kounter=0,atas,bawah,kanan,kiri,indeks=0;
+    char temp2[8];
+    char *temp=(char *)malloc(m*n*sizeof(char));
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            if (i==0){
+                atas=(m-1);
+                bawah=i+1;
+            }
+            else if (i==(m-1)){
+                atas=i-1;
+                bawah=0;
+            }
+            else{
+                atas=i-1;
+                bawah=i+1;
+            }
+            if (j==0){
+                kiri=(n-1);
+                kanan=j+1;
+            }
+            else if (j==(n-1)){
+                kiri=j-1;
+                kanan=0;
+            }
+            else{
+                kiri=j-1;
+                kanan=j+1;
+            }
+            temp2[0]=array_main[atas][kiri];
+            temp2[1]=array_main[atas][j];
+            temp2[2]=array_main[atas][kanan];
+            temp2[3]=array_main[i][kiri];
+            temp2[4]=array_main[i][kanan];
+            temp2[5]=array_main[bawah][kiri];
+            temp2[6]=array_main[bawah][j];
+            temp2[7]=array_main[bawah][kanan];
+            for (k=0;k<8;k++){
+                if (temp2[k]=='X'){
+                    kounter=kounter+1;
+                }
+            }
+            if (array_main[i][j]=='X'){
+                if (kounter==2 || kounter==3){
+                    temp[indeks]='X';
+                }
+                else{
+                    temp[indeks]='-';
+                }
+                indeks=indeks+1;
+            }
+            else if (array_main[i][j]=='-'){
+                if (kounter==3){
+                    temp[indeks]='X';
+                }
+                else{
+                    temp[indeks]='-';
+                }
+                indeks=indeks+1;
+            }
+            kounter=0;
+        }
+    }
+    indeks=0;
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            array_main[i][j]=temp[indeks];
+            indeks=indeks+1;
+        }
+    }
+}
+
+char** readFile(int * max_row, int * max_col) {
+	char read,nama_file[50];
+	int row = 0;
+	int column = 0;
+	int stop = 0;
+	FILE* file;
+    int row_now = 0;
+
+    printf("Daftar file seed:\n");
+    printf("1. diehard.txt \t\t\t\t 2. dinner_table.txt\n");
+    printf("3. fish.txt \t\t\t\t 4. flower.txt\n");
+    printf("5. format.txt \t\t\t\t 6. glider.txt\n");
+    printf("7. glider_explosion.txt \t\t 8. glider_gun.txt\n");
+    printf("9. mycolony.txt \t\t\t 10. quilt_square.txt\n");
+    printf("11. rpent.txt \t\t\t\t 12. seeds.txt\n");
+    printf("13. simple.txt \t\t\t\t 14. snowflake.txt\n");
+    printf("15. spiral.txt \t\t\t\t 16. stableplateau.txt\n");
+    printf("17. tictactoe.txt\n");
+    input_nama_file:
+    printf("Masukkan nama file seed (masukkan q untuk keluar): ");
+    scanf("%s",nama_file);
+    if (strcmp(nama_file,"q")==0){
+        printf("Terima kasih");
+        *max_row=99999;
+        *max_col=99999;
+        return(NULL);
+    }
+    file=fopen(nama_file,"r");
+    if (file==NULL){
+        printf("File cant open\n");
+        goto input_nama_file;
+    }
+
+	read = fgetc(file);
+	while (read != '\n'){
+		row = (row * 10) + (int)read - (int)'0';
+		read = fgetc(file);
+	}
+
+	read = fgetc(file);
+	while (read != '\n'){
+		column = (column * 10) + (int)read - (int)'0';
+		read = fgetc(file);
+	}
+
+	char **matrix = (char **)malloc(row * sizeof(char *));
+
+	for(int i = 0; i < row; i++) {
+		matrix[i] = (char *)malloc(column * sizeof(char));
+	}
+
+	for(int i = 0; i < row; i++) {
+		for(int j = 0; j < column; j++) {
+			read = fgetc(file);
+			if(read == '\n'){
+				read = fgetc(file);
+			}
+			matrix[i][j] = read;
+		}
+    }
+    *max_row = row;
+    *max_col = column;
+    fclose(file);
+    return matrix;
+}
+
+
