@@ -1,7 +1,7 @@
 /* EL2208 Praktikum Pemecahan Masalah dengan C 2019/2020
 * MODUL 9 – TUGAS BESAR
 * Kelompok : 5 (Rombongan E)
-* Hari dan Tanggal :
+* Hari dan Tanggal : Kamis, 16 April 2020
 * Asisten (NIM) : Wuri Utami (13217024)
 * Nama File : game-of-life.c
 * Deskripsi : Program utama yang mensimulasikan game of life
@@ -15,7 +15,7 @@
 void display(char **array_main,int baris,int kolom);
 
 int main(){
-    int aksi,iterasi;
+    int aksi=99,iterasi,loop;
     char baru;
 
     printf("---------------------------------------- SELAMAT DATANG DI PERMAINAN GAME OF LIFE ----------------------------------------\n\n");
@@ -52,14 +52,22 @@ int main(){
             }
         }
         else if (aksi==3){
-            printf("Apakah anda mau memasukkan file seed baru?(Y/N)\n");
-            scanf(" %c",&baru);
-            if (baru=='Y'){
-                seed();
-                aksi=99;//agar loop kembali berjalan
-            }
-            else if (baru=='N'){
-                printf("Selamat Tinggal");
+            loop=1;
+            while(loop==1){
+                printf("Apakah anda mau memasukkan file seed baru?(Y/N)\n");
+                scanf(" %c",&baru);
+                if (baru=='Y'){
+                    seed();
+                    aksi=99;//agar loop kembali berjalan
+                    loop=0;
+                }
+                else if (baru=='N'){
+                    printf("Selamat Tinggal");
+                    loop=0;
+                }
+                else{
+                    printf("pilihan invalid.\n");
+                }
             }
         }
         else{
