@@ -13,10 +13,10 @@
 
 void display(char **array_main,int baris,int kolom){
     int ms=250,i,j;
-    clock_t start=clock();
-    while(clock()<start+ms);
-    system("cls");
-    for(i=0;i<baris;i++){
+    clock_t start=clock();//menginput waktu sekarang ke variabel start
+    while(clock()<start+ms);//loop hingga clock() bertambah sebanyak 250 ms dari variabel start
+    system("cls");//fungsi clear screen
+    for(i=0;i<baris;i++){//loop untuk mencetak elemen-elemen array ke layar
         for(j=0;j<kolom;j++){
             printf("%c",array_main[i][j]);
         }
