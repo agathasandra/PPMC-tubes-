@@ -11,6 +11,7 @@
 #include<stdlib.h>
 #include<conio.h>
 #include<time.h>
+#include<string.h>
 
 void tick(char **array_main,int m,int n);
 void display(char **array_main,int baris,int kolom);
@@ -64,7 +65,7 @@ int main(){
                 scanf(" %c",&baru);
                 if (baru=='Y' || baru=='y'){
                     free(array_main);
-                    pilihan=99;
+                    aksi=99;
                     loop=0;
                     array_main=readFile(&baris,&kolom);
                     if (array_main!=NULL){
