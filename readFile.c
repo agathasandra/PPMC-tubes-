@@ -4,20 +4,20 @@
 * Hari dan Tanggal : Kamis, 16 April 2020
 * Asisten (NIM) : Wuri Utami (13217024)
 * Nama File : game-of-life.c
-* Deskripsi : Program utama yang mensimulasikan game of life
+* Deskripsi : Fungsi untuk membaca external files
 */
 
 #include <stdio.h>
 #include<string.h>
 #include <stdlib.h>
 
-char** readFile(char * pilih, int * max_row, int * max_col) {
+char** readFile(char * filename, int * max_row, int * max_col) {
 	char read;
 	int row = 0;
 	int column = 0;
 	int stop = 0;
 	FILE* file;
-    file = fopen(pilih, "r");
+    file = fopen(filename, "r");
     int row_now = 0;
 
 	read = fgetc(file);
