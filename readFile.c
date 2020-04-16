@@ -11,11 +11,9 @@
 #include<string.h>
 #include <stdlib.h>
 
-char** readFile(char * filename, int * max_row, int * max_col) {
+char** readFile(char * filename, int * max_row, int * max_col){
 	char read;
-	int row = 0;
-	int column = 0;
-	int stop = 0;
+	int row = 0, column = 0, stop = 0;
 	FILE* file;
     file = fopen(filename, "r");
     int row_now = 0;
@@ -34,12 +32,12 @@ char** readFile(char * filename, int * max_row, int * max_col) {
 
 	char **matrix = (char **)malloc(row * sizeof(char *));
 
-	for(int i = 0; i < row; i++) {
+	for(int i = 0; i < row; i++){
 		matrix[i] = (char *)malloc(column * sizeof(char));
 	}
 
-	for(int i = 0; i < row; i++) {
-		for(int j = 0; j < column; j++) {
+	for(int i = 0; i < row; i++){
+		for(int j = 0; j < column; j++){
 			read = fgetc(file);
 			if(read == '\n'){
 				read = fgetc(file);
