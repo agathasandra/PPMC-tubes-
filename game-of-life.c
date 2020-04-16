@@ -52,7 +52,7 @@ int main(){
         }
 	else if (aksi == 2){
 	    printf("Masukkan jumlah iterasi: ");
-	    scanf("%d",iterasi);
+	    scanf("%d",&iterasi);
             for(i=0;i<iterasi;i++){
                 tick(array_main,baris,kolom);
                 display(array_main,baris,kolom);
