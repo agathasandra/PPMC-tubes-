@@ -7,9 +7,9 @@
 * Deskripsi : Fungsi untuk print matrix
 */
 
-void print_matrix(char ** matrix, int max_row, int max_col) {
-	for(int i = 0; i < max_row; i++) {
-		for(int j = 0; j < max_col; j++) {
+void print_matrix(char ** matrix, int max_row, int max_col){
+	for(int i = 0; i < max_row; i++){
+		for(int j = 0; j < max_col; j++){
 			printf("%c", matrix[i][j]);
 		}
 		printf("\n");
