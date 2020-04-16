@@ -9,14 +9,14 @@
 
 #include<stdio.h>
 
-char** copy_matrix(char ** input_matrix, int row, int column) {
+char** copy_matrix(char ** input_matrix, int row, int column){
 	char **matrix = (char **)malloc(row * sizeof(char *));
 
-	for(int i = 0; i < row; i++) {
+	for(int i = 0; i < row; i++){
 		matrix[i] = (char *)malloc(column * sizeof(char));
 	}
-	for(int i = 0; i < row; i++) {
-		for(int j = 0; j < column; j++) {
+	for(int i = 0; i < row; i++){
+		for(int j = 0; j < column; j++){
 			matrix[i][j] = input_matrix[i][j];
 		}
 	}
