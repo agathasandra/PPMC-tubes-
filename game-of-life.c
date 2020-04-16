@@ -68,7 +68,7 @@ int main(){
             loop = 1;
             while(loop == 1){
                 printf("Apakah Anda mau memasukkan file seed baru?(Y/N)\n");
-                scanf("%c", &baru);
+                scanf(" %c", &baru);
                 if (baru == 'Y' || baru == 'y'){
                     free(array_main);
                     pilihan = 99;
