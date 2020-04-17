@@ -38,7 +38,7 @@ int main(){
     printf("1. Jika sel hidup memiliki kurang dari 1 tetangga yang hidup, maka sel tersebut akan mati/ underpopulation.\n");
     printf("2. Jika sel hidup memiliki 2 tetangga yang hidup, maka sel tersebut akan tetap hidup pada iterasi selanjutnya /next generation.\n");
     printf("3. Jika sel mati memiliki 3 tetangga yang hidup, maka sel menjadi hidup pada iterasi selanjutnya /reproduction.\n");
-    printf("4. Jika sel hidup memiliki 4 tetangga yang hidup, maka sel tersebut akan mati pada iterasi selanjutnya /overpopulation.\n\n");
+    printf("4. Jika sel hidup memiliki lebih dari 4 tetangga yang hidup, maka sel tersebut akan mati pada iterasi selanjutnya /overpopulation.\n\n");
     printf("Mari kita mulai permainannya!\n");
 
     array_main = readFile(&baris, &kolom); //menghubungkan ke fungsi readFile
