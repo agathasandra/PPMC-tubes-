@@ -35,10 +35,10 @@ int main(){
     printf("Karakter '-' menandakan kondisi sel yang mati dan karakter 'X' menandakan kondisi sel yang hidup.\n");
     printf("Permainan ini ditentukan oleh kondisi awal permainan, yaitu berdasarkan posisi sel pada setiap seed.\n\n");
     printf("Adapun beberapa peraturan yang berlaku pada permainan ini, yaitu: \n");
-    printf("1. Jika sel memiliki kurang dari 1 tetangga yang hidup, maka sel tersebut akan mati/ underpopulation.\n");
-    printf("2. Jika sel memiliki 2 tetangga yang hidup, maka sel tersebut akan tetap hidup pada iterasi selanjutnya /next generation.\n");
-    printf("3. Jika sel memiliki 3 tetangga yang hidup, maka sel menjadi hidup pada iterasi selanjutnya /reproduction.\n");
-    printf("4. Jika sel memiliki 4 tetangga yang hidup, maka sel tersebut akan mati pada iterasi selanjutnya /overpopulation.\n\n");
+    printf("1. Jika sel hidup memiliki kurang dari 1 tetangga yang hidup, maka sel tersebut akan mati/ underpopulation.\n");
+    printf("2. Jika sel hidup memiliki 2 tetangga yang hidup, maka sel tersebut akan tetap hidup pada iterasi selanjutnya /next generation.\n");
+    printf("3. Jika sel mati memiliki 3 tetangga yang hidup, maka sel menjadi hidup pada iterasi selanjutnya /reproduction.\n");
+    printf("4. Jika sel hidup memiliki 4 tetangga yang hidup, maka sel tersebut akan mati pada iterasi selanjutnya /overpopulation.\n\n");
     printf("Mari kita mulai permainannya!\n");
 
     array_main = readFile(&baris, &kolom); //menghubungkan ke fungsi readFile
@@ -219,7 +219,7 @@ char** readFile(int * max_row, int * max_col) {
     printf("[9] mycolony.txt                         [18] q (keluar)\n");
 
     input_nama_file:
-    printf("\nMasukkan nama file seed: ");
+    printf("\nMasukkan nama file seed(masukkan karakter 'q' untuk keluar): ");
     scanf("%s", nama_file);
 
     if (strcmp(nama_file,"q") == 0){ //bila user memasukkan input q, maka program akan berhenti dan user keluar
