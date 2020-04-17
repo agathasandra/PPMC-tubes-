@@ -219,7 +219,7 @@ char** readFile(int * max_row, int * max_col) {
     printf("[9] mycolony.txt                         [18] q (keluar)\n");
 
     input_nama_file:
-    printf("\nMasukkan nama file seed(masukkan karakter 'q' untuk keluar): ");
+    printf("\nMasukkan nama file seed: ");
     scanf("%s", nama_file);
 
     if (strcmp(nama_file,"q") == 0){ //bila user memasukkan input q, maka program akan berhenti dan user keluar
